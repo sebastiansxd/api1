@@ -45,28 +45,6 @@ exports.createPedido = async (req, res) => {
     }
 };
 
-exports.createPedido = async (req, res) => {
-    try {
-        const { total, id_repartidor, items } = req.body;
-        // items = [{ id_producto, cantidad }]
-        const [result] = await db.query(
-            'INSERT INTO pedidos (total, id_repartidor) VALUES (?, ?)',
-            [total || 0, id_repartidor || null]
-        );
-        const id_pedido = result.insertId;
-
-        if (Array.isArray(items) && items.length) {
-            const insertDetailPromises = items.map(i => {
-                return db.query('INSERT INTO detalle_pedidos (id_pedido, id_producto, cantidad) VALUES (?, ?, ?)', [id_pedido, i.id_producto, i.cantidad]);
-            });
-            await Promise.all(insertDetailPromises);
-        }
-
-        res.status(201).json({ mensaje: 'Pedido creado', id_pedido });
-    } catch (error) {
-        res.status(500).json({ mensaje: 'Error al crear pedido', error });
-    }
-};
 
 exports.getPedidoById = async (req, res) => {
     try {
@@ -117,4 +95,5 @@ exports.deletePedido = async (req, res) => {
         logger.error('Error eliminar pedido:', error);
         res.status(500).json({ mensaje: 'Error al eliminar pedido', error });
     }
+
 };
