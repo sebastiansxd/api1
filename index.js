@@ -52,10 +52,7 @@ start();
 const restauranteRoutes = require('./routes/restauranteRoutes');
 const productoRoutes = require('./routes/productoRoutes');
 
-// Usar las rutas
-app.use('/api/restaurantes', restauranteRoutes);
-app.use('/api/productos', productoRoutes);
-app.use('/api/pedidos', pedidoRoutes);
-app.use('/api/repartidores', repartidorRoutes);
+
+
 
 // ...
