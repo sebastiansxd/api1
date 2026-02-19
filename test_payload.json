@@ -1,0 +1,6 @@
+{
+  "id_repartidor": 1,
+  "items": [
+    { "id_producto": 1, "cantidad": 1 }
+  ]
+}
