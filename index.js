@@ -28,6 +28,16 @@ app.get('/api/pedidos', (req, res) => {
     res.json({ mensaje: 'Rutas disponibles: GET /api/pedidos/pedidos-restaurante?id={id}  |  POST /api/pedidos' });
 });
 
+// Ayuda mínima para /api/repartidores
+app.get('/api/repartidores', (req, res) => {
+    res.json({ mensaje: 'Rutas disponibles: GET /api/repartidores/ganancias' });
+});
+
+// Ayuda mínima para /api/reportes
+app.get('/api/reportes', (req, res) => {
+    res.json({ mensaje: 'Rutas disponibles: GET /api/reportes/productos-mas-vendidos?limit=10' });
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`);
